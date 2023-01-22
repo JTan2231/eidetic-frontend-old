@@ -1,0 +1,52 @@
+:root {
+    --input-font-size: 16px;
+
+    --entry-title-font-size: 24px;
+    --entry-timestamp-font-size: 16px;
+    --entry-font-size: 18px;
+
+    --entry-viewer-title-font-size: 40px;
+    --entry-viewer-timestamp-font-size: 14px;
+
+    --navbar-font-size: 40px;
+
+    --header-font-size: 24px;
+    --item-background-color: #ccc;
+    --item-transition-color: #eee;
+
+    --header-height: 2em;
+
+    --navbar-height: 1em;
+    --navbar-margin: 1.5em;
+
+    --default-transition-time: 0.3s;
+    --transition-timing-function: cubic-bezier(.5, 0, .5, 1);
+
+    --body-padding: 1.5em;
+}
+
+body {
+    font-size: var(--header-font-size);
+    margin: 0;
+    padding: 0 var(--body-padding);
+    overflow-x: hidden;
+}
+
+div {
+    font-family: Helvetica;
+}
+
+.textLink {       
+    transition: all var(--default-transition-time);
+    color: #000; 
+    cursor: pointer;
+}               
+                
+.textLink:hover { 
+    color: #888;
+    text-decoration: underline;
+}
+
+.goBack {
+    font-size: var(--input-font-size);
+}

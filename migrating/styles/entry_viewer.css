@@ -1,0 +1,31 @@
+.entryWrapper {
+    font-size: var(--entry-font-size);
+    width: 42%;
+    margin-top: -3em;
+    margin-bottom: 15em;
+}
+
+.entryViewerContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+}
+
+.entryViewerContent {
+    padding: 0 1em;
+    background-color: #eee;
+}
+
+.entryViewerTitle {
+    font-size: var(--entry-viewer-title-font-size);
+}
+
+.entryViewerTimestamp {
+    font-size: var(--entry-viewer-timestamp-font-size);
+    padding-bottom: calc(1.5 * var(--entry-title-font-size));
+}
+
+.entryViewerDisplay {
+    line-height: 1.5em;
+}

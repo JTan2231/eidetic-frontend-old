@@ -1,0 +1,96 @@
+.fixed {
+    position: fixed;
+    top: 0;
+    left: var(--body-padding);
+    z-index: 100;
+}
+
+.header {
+    --padding-x: 1em;
+
+    padding: 0;
+    position: fixed;
+    width: calc(100vw - var(--padding-x) - var(--body-padding)); /* - scroll bar */
+    height: var(--header-height);
+    font-size: var(--header-font-size);
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    overflow: hidden;
+}
+
+.headerBackground {
+    position: fixed;
+    width: 100vw;
+    font-size: var(--header-font-size);
+    height: var(--header-height);
+    background-color: white;
+}
+
+.headerOption, .logo {
+    cursor: pointer;
+    flex-basis: 5%;
+}
+
+.headerOption {
+    font-size: var(--entry-font-size);
+}
+
+.fauxHeader {
+    width: 100%;
+    height: var(--header-height);
+}
+
+.menuDropdown {
+    position: fixed;
+    top: var(--header-height);
+    transition: max-height calc(2 * var(--default-transition-time));
+    font-size: var(--input-font-size);
+    max-height: 0;
+    width: 5em;
+    color: black;
+    background-color: white;
+    overflow: hidden;
+    border: 0;
+    right: var(--body-padding);
+    font-size: var(--header-font-size);
+}
+
+.menuDropdownContents {
+    transition: opacity calc(2 * var(--default-transition-time));
+    opacity: 0;
+    color: black;
+    font-size: var(--input-font-size);
+}
+
+.headerOption:hover #account,
+.headerOption:hover .menuDropdownContents {
+    max-height: 30em;
+    opacity: 1;
+}
+
+.menuDropdownItem {
+    border-bottom: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+    padding: 0.25em;
+    display: flex;
+}
+
+#topMenuItem {
+    border-top: 1px solid #aaa;
+}
+
+.navbar {
+    margin: var(--navbar-margin) 0;
+    display: flex;
+    align-content: center;
+    font-size: var(--navbar-font-size);
+    height: var(--navbar-height);
+}
+
+.pageTitle {
+    transition: all var(--default-transition-time) cubic-bezier(0, 1.01, .54, .98);
+}
