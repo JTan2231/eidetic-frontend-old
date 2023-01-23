@@ -1,0 +1,58 @@
+.loginPage {
+    position: fixed;
+    width: calc(100vw - var(--body-padding));
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loginContainer, .loginField {
+    --field-height: 1em;
+    --field-width: 5em;
+    --field-margin-y: 0.5em;
+    --field-margin-x: 1em;
+    --field-padding-y: 0.2em;
+    --field-padding-x: calc(3 * var(--field-padding-y));
+}
+
+.loginContainer {
+    width: calc(var(--field-width) + 2 * var(--field-padding-x) + 2 * var(--field-margin-x));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.loginField {
+    border: 2px solid #eee;
+    font-size: var(--input-font-size);
+    height: var(--field-height);
+    max-width: calc(100% - 2 * var(--field-padding-x) - 2 * var(--field-margin-x));
+    background-color: white;
+    padding: var(--field-padding-y) var(--field-padding-x);
+    margin: var(--field-margin-y) var(--field-margin-x);
+}
+
+.loginButton {
+    border: 0;
+    outline: 0;
+    background-color: black;
+    color: white;
+    font-size: var(--input-font-size);
+    padding: var(--field-padding-y) var(--field-padding-x);
+    margin: var(--field-margin-y) var(--field-margin-x);
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.loginButton:hover {
+    outline: 1px solid black;
+    color: black;
+    background-color: white;
+}
+
+.error {
+    border: 2px solid red;
+}

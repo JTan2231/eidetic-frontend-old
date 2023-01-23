@@ -1,0 +1,160 @@
+.containerWrapper {
+    font-size: var(--input-font-size);
+    width: 100%;
+    padding: 2.5em 0;
+    border-bottom: 1px solid black;
+}
+
+.entryContainer, .newEntryContainer {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #eee;
+    width: 100%;
+}
+
+.newEntryContainer {
+    justify-content: right;
+}
+
+.entry, .newEntry, .collectionTitle {
+    --margin: 1em;
+    --padding: 0.5em;
+
+    font-size: var(--entry-font-size);
+    margin: var(--margin);
+    padding: 0.5em;
+    flex-basis: calc(25% - 3 * var(--margin));
+    height: calc(5.5em - 2 * var(--padding));
+    transition: background-color 0.5s, outline 0.5s;
+    cursor: pointer;
+}
+
+.newEntry, .collectionTitle {
+    background-color: #eee;
+}
+
+.newEntry:hover,
+.collectionTitle:hover,
+.collectionTitle:focus {
+    background-color: white;
+}
+
+.entry {
+    background-color: var(--item-background-color);
+    overflow: hidden;
+    outline: 1px solid transparent;
+}
+
+.entryContentContainer {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.entryPreview, .collectionPreview {
+    padding: 0 0.5em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.collectionPreview {
+    justify-content: center;
+}
+
+.titleContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.25em;
+}
+
+.entryTitle {
+    font-size: var(--entry-title-font-size);
+}
+
+.entryTimestamp {
+    font-size: var(--entry-timestamp-font-size);
+}
+
+.entry:hover, .entry:focus {
+    background-color: var(--item-transition-color);
+}
+
+.entry:focus {
+    outline: 1px solid black;
+}
+
+.entry:hover .entryTitle,
+.entry:focus .entryTitle {
+    text-decoration: underline;
+}
+
+.newEntry {
+    flex-basis: 100%;
+    height: 10em;
+    cursor: text;
+    font-family: Helvetica;
+    border: 0;
+    resize: none;
+    outline: 1px solid transparent;
+    transition: all 0.3s;
+}
+
+.newEntry:focus {
+    background-color: white;
+    outline: 1px solid black;
+}
+
+.saveEntryGroup {
+    transition: all 0.5s;
+    opacity: 0;
+    display: flex;
+    align-content: center;
+    overflow: hidden;
+    padding: 0 1em 1em;
+}
+
+.newEntryTitleInput {
+    outline: 1px solid transparent;
+    font-size: var(--entry-font-size);
+    width: 10em;
+    height: 1.1em;
+    margin: auto 1em;
+    transition: all 0.3s;
+    border: 0;
+    box-shadow: 0 1px 0 black;
+    background-color: transparent;
+}
+
+.newEntryTitleInput:hover {
+    background-color: white;
+}
+
+.newEntryTitleInput:focus {
+    outline: 1px solid black;
+    background-color: white;
+}
+
+.saveEntryButton {
+    font-size: var(--entry-font-size);
+    transition: all 0.3s;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 0.25em;
+    height: 1.1em;
+    margin: auto;
+    border: 1px solid black;
+}
+
+.saveEntryButton:hover {
+    color: black;
+    background-color: white;
+}
