@@ -15,7 +15,7 @@
     --field-margin-y: 0.5em;
     --field-margin-x: 1em;
     --field-padding-y: 0.2em;
-    --field-padding-x: calc(3 * var(--field-padding-y));
+    --field-padding-x: calc(2 * var(--field-padding-y));
 }
 
 .loginContainer {
@@ -26,13 +26,41 @@
 }
 
 .loginField {
-    border: 2px solid #eee;
+    border: 1px solid transparent;
     font-size: var(--input-font-size);
-    height: var(--field-height);
-    max-width: calc(100% - 2 * var(--field-padding-x) - 2 * var(--field-margin-x));
+    height: calc(100% - 2px);
+    width: calc(100% - 2px - var(--field-padding-x));
+    padding: 0;
+    padding-left: var(--field-padding-x);
     background-color: white;
-    padding: var(--field-padding-y) var(--field-padding-x);
-    margin: var(--field-margin-y) var(--field-margin-x);
+    outline: 0;
+    transition: border 0.5s;
+}
+
+.loginFieldContainer {
+    position: relative;
+    margin: 0.5em 0;
+}
+
+.loginFieldContainer::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 0%;
+    transition: width 0.5s;
+}
+
+.loginFieldContainer:hover::after {
+    left: 0;
+    width: 100%;
+}
+
+.loginField:focus {
+    border: 1px solid black;
 }
 
 .loginButton {
@@ -43,6 +71,7 @@
     font-size: var(--input-font-size);
     padding: var(--field-padding-y) var(--field-padding-x);
     margin: var(--field-margin-y) var(--field-margin-x);
+    margin-right: 0;
     transition: all 0.5s;
     cursor: pointer;
 }

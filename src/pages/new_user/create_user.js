@@ -12,11 +12,11 @@ export const CreateUser = () => {
 
     const [fieldClasses, setFieldClasses] = useState('loginField');
 
-    const createClick = async () => {
+    const createClick = () => {
         const username = usernameInput.current.value;
         const password = passwordInput.current.value;
 
-        await fetch(`${config.API_ROOT}create-user/`, {
+        fetch(`${config.API_ROOT}create-user/`, {
             method: 'POST',
             body: JSON.stringify({
                 username: username,
@@ -26,9 +26,9 @@ export const CreateUser = () => {
             headers: {
                 'Content-Type': 'application/json',
             }
-        }).then(res => res.json()).then(res => {
-            if (res.token) {
-                console.log('TODO: create-user http request');
+        }).then(res => {
+            if (res.status === 200) {
+                window.location.href = '/home';
             }
             else {
                 setFieldClasses('loginField error');
@@ -49,9 +49,13 @@ export const CreateUser = () => {
             </div>
             <div className="loginPage">
                 <div className="loginContainer">
-                    <input ref={ usernameInput } className={ fieldClasses } type="text" placeholder="Username" onKeyPress={ createKeyPress } />
-                    <input ref={ passwordInput } className={ fieldClasses } type="password" placeholder="Password" onKeyPress={ createKeyPress } />
-                    <button className="loginButton" onClick={ createClick }>
+                    <div className="loginFieldContainer">
+                        <input ref={usernameInput} className={fieldClasses} type="text" placeholder="Username" onKeyPress={createKeyPress} />
+                    </div>
+                    <div className="loginFieldContainer">
+                        <input ref={passwordInput} className={fieldClasses} type="password" placeholder="Password" onKeyPress={createKeyPress} />
+                    </div>
+                    <button className="loginButton" onClick={createClick}>
                         Create
                     </button>
                 </div>

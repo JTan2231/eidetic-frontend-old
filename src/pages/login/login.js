@@ -1,7 +1,6 @@
 import * as config from '../../util/config.js';
 import { getCookie } from '../../util/cookie.js';
-import { React, useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { useRef, useState, useEffect } from 'react';
 
 import '../../styles/index.css';
 import '../../styles/login.css';
@@ -12,6 +11,10 @@ export const Login = () => {
     const passwordInput = useRef();
 
     const [fieldClasses, setFieldClasses] = useState('loginField');
+
+    useEffect(() => {
+        usernameInput.current.focus();
+    }, []);
 
     const loginClick = () => {
         const username = usernameInput.current.value;
@@ -26,10 +29,12 @@ export const Login = () => {
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken'),
             }
-        }).then(res => res.json()).then(res => {
-            if (res.token) {
-                console.log('TODO');
+        }).then(res => {
+            console.log(res);
+            if (res.status === 200) {
+                window.location.href = '/home';
             }
             else {
                 setFieldClasses('loginField error');
@@ -55,18 +60,22 @@ export const Login = () => {
             <div className="loginPage">
                 <div>
                     <div className="loginContainer">
-                        <input ref={ usernameInput } className={ fieldClasses } type="text" placeholder="Username" onKeyPress={ loginKeyPress } />
-                        <input ref={ passwordInput } className={ fieldClasses } type="text" placeholder="Password" onKeyPress={ loginKeyPress } />
-                        <button className="loginButton" onClick={ loginClick }>
+                        <div className="loginFieldContainer">
+                            <input ref={usernameInput} className={fieldClasses} type="text" placeholder="Username" onKeyPress={loginKeyPress} />
+                        </div>
+                        <div className="loginFieldContainer">
+                            <input ref={passwordInput} className={fieldClasses} type="password" placeholder="Password" onKeyPress={loginKeyPress} />
+                        </div>
+                        <button className="loginButton" onClick={loginClick}>
                             Login
                         </button>
                     </div>
                     <div style={{ position: 'fixed', bottom: '3em', fontSize: '16px' }}>
                         No account?&nbsp;
-                        <span class="textLink" onClick={ () => console.log('TODO: create user') }>Create one here</span>
+                        <a class="textLink" href="/new_user">Create one here</a>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
