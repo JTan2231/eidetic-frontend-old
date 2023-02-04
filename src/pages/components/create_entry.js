@@ -1,5 +1,4 @@
 import * as config from '../../util/config.js';
-import { getCookie } from '../../util/cookie.js';
 import { useRef, useState } from 'react';
 
 import '../../styles/entries.css';
@@ -22,7 +21,7 @@ export const CreateEntry = () => {
             headers: {
                 'Content-Type': 'application/json',
             }
-        }).then(res => res.json()).then(res => {
+        }).then(res => res.json()).then(() => {
             window.location.reload();
         });
     };

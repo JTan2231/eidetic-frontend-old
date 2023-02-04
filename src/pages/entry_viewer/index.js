@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Home } from './home.js';
+import { EntryViewer } from './entry_viewer.js';
 
 import '../../styles/index.css';
 
 ReactDOM.render(
-    <Home />,
+    <EntryViewer />,
     document.getElementById('app')
 );

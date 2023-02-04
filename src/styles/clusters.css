@@ -1,0 +1,51 @@
+.clusters {
+    display: flex;
+    flex-direction: column;
+}
+
+.clusterContainer {
+    background-color: #cccccc;
+    padding: 0.5em;
+    margin: 1em 0;
+    font-size: 16px;
+    width: 40%;
+    align-self: center;
+}
+
+.entryLink {
+    text-decoration: none;
+    color: unset;
+}
+
+.clusterItem {
+    padding: 0.5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background-color: white;
+    position: relative;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.clusterItem:hover {
+    background-color: transparent;
+}
+
+.clusterItemText {
+    margin: 0 0.5em;
+    user-select: none;
+}
+
+.clusterItemTimestamp {
+    font-size: 14px;
+    color: #888888;
+}
+
+.clusterItemTitle {
+    font-weight: bold;
+}
+
+.clusterItemContent {
+    font-size: 14px;
+}

@@ -14,6 +14,21 @@ export const Entry = (props) => {
         setID(props.id);
     }, []);
 
+    // create an array of props from here to the root of the thread
+    const getThread = (children) => {
+        children.push(props);
+
+        if (props.getThread !== undefined) {
+            children = props.getThread(children);
+        }
+
+        return children;
+    };
+
+    const getThreadClick = () => {
+        props.setThread(getThread([]));
+    }
+
     const fetchRelated = () => {
         fetch(`${config.API_ROOT}entry-links/?entry_id=${id}`, {
             method: 'GET',
@@ -23,7 +38,7 @@ export const Entry = (props) => {
         }).then(res => res.json()).then(res => {
             const entries = res.entries;
             setRelated(entries.map(r => (
-                <Entry id={r.entry_id} title={r.title} timestamp={r.timestamp} content={r.content} />
+                <Entry id={r.entry_id} title={r.title} timestamp={r.timestamp} content={r.content} getThread={getThread} setThread={props.setThread} />
             )));
         });
     };
@@ -50,6 +65,7 @@ export const Entry = (props) => {
                     <div className="entryTimestamp">{splitTimestamp(entryJSON.timestamp)}</div>
                     <div className={textClasses}>{entryJSON.content}</div>
                     <div className="entryActionBar">
+                        <span className="entryAction" onClick={getThreadClick}>Show thread</span>
                         <span className="entryAction" onClick={showText === 'Show more' ? showMore : showLess}>{showText}</span>
                         <span className="entryAction" onClick={related.length > 0 ? collapse : fetchRelated}>
                             {related.length > 0 ? 'Collapse' : 'See related'}

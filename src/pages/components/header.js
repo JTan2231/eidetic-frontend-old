@@ -83,8 +83,7 @@ export const Header = (props) => {
     }, []);
 
     const logoClick = () => {
-        navigate(0);
-    }
+    };
 
     const menuProps = {
         logoutClick: logoutClick,
@@ -97,7 +96,7 @@ export const Header = (props) => {
             <div className="fixed">
                 <div className="headerBackground">
                     <div className="header">
-                        <div className="logo" onClick={logoClick}>Eidetic</div>
+                        <div className="logo"><a href="/" style={{ textDecoration: 'none', color: 'black' }}>Eidetic</a></div>
                         <div style={titleStyle} className="headerOption pageTitle" onClick={scrollToTop}>
                             <div className="textLink">
                                 {pageTitle}

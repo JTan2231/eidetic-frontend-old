@@ -23,6 +23,7 @@
     --transition-timing-function: cubic-bezier(.5, 0, .5, 1);
 
     --body-padding: 1.5em;
+    --middle-padding: 2em;
 }
 
 body {

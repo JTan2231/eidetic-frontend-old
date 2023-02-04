@@ -1,31 +1,15 @@
-.entryWrapper {
-    font-size: var(--entry-font-size);
-    width: 42%;
-    margin-top: -3em;
-    margin-bottom: 15em;
-}
-
-.entryViewerContainer {
+.homeContainer {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: auto;
+    flex-direction: column;
 }
 
-.entryViewerContent {
-    padding: 0 1em;
-    background-color: #eee;
+.entryInteractionContainer {
+    width: 40%;
+    align-self: center;
 }
 
-.entryViewerTitle {
-    font-size: var(--entry-viewer-title-font-size);
-}
-
-.entryViewerTimestamp {
-    font-size: var(--entry-viewer-timestamp-font-size);
-    padding-bottom: calc(1.5 * var(--entry-title-font-size));
-}
-
-.entryViewerDisplay {
-    line-height: 1.5em;
+.threadViewer {
+    width: 40%;
+    align-self: center;
+    border-bottom: 1px solid black;
 }
