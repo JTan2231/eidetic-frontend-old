@@ -50,7 +50,7 @@
     background-color: black;
     z-index: 1;
     right: 0;
-    bottom: -3px;
+    bottom: -1px;
     height: 1px;
     width: 0%;
     transition: width 0.5s;
