@@ -1,0 +1,39 @@
+.searchField {
+    --field-padding-y: 0.2em;
+    --field-padding-x: calc(2 * var(--field-padding-y));
+    border: 1px solid transparent;
+    font-size: var(--input-font-size);
+    height: calc(100% - 2px);
+    width: calc(100% - 2px - var(--field-padding-x));
+    padding: 0.25em 0;
+    padding-left: var(--field-padding-x);
+    background-color: white;
+    outline: 0;
+    transition: border 0.5s;
+}
+
+.searchFieldContainer {
+    position: relative;
+    margin: 0.5em 0;
+    font-size: var(--input-font-size);
+}
+
+.searchFieldContainer::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 4.2em;
+    transition: width 0.5s;
+}
+
+.searchFieldContainer:hover::after {
+    width: 100%;
+}
+
+.searchField:focus {
+    border: 1px solid black;
+}

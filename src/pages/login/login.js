@@ -34,7 +34,7 @@ export const Login = () => {
         }).then(res => {
             console.log(res);
             if (res.status === 200) {
-                window.location.href = '/home';
+                window.location.href = '/';
             }
             else {
                 setFieldClasses('loginField error');

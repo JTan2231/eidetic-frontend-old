@@ -9,10 +9,7 @@ const AccountMenu = (props) => {
     return (
         <div id="account" className="menuDropdown">
             <div className="menuDropdownContents">
-                <div id="topMenuItem" className="textLink menuDropdownItem">
-                    Profile
-                </div>
-                <div className="textLink menuDropdownItem" onClick={props.logoutClick}>
+                <div id="topMenuItem" className="textLink menuDropdownItem" onClick={props.logoutClick}>
                     Log out
                 </div>
             </div>

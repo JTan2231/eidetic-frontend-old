@@ -1,8 +1,6 @@
 .containerWrapper {
     font-size: var(--input-font-size);
-    width: 40%;
     padding: 2.5em 0;
-    align-self: center;
 }
 
 .entryContainer, .newEntryContainer {
@@ -21,7 +19,6 @@
     --padding: 0.5em;
 
     font-size: var(--entry-font-size);
-    margin: var(--margin);
     padding: 0.5em;
     flex-basis: calc(25% - 3 * var(--margin));
     height: calc(5.5em - 2 * var(--padding));
@@ -137,6 +134,10 @@
 .newEntry:focus {
     background-color: white;
     outline: 1px solid black;
+}
+
+.newEntry:focus .newEntryError {
+    outline: 1px solid red;
 }
 
 .saveEntryGroup {

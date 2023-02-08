@@ -2,7 +2,6 @@ import * as config from '../../util/config';
 import { useEffect, useState } from 'react';
 import { Header } from '../components/header';
 import { Entry } from '../components/entry';
-import { CreateEntry } from '../components/create_entry';
 
 import '../../styles/entry_viewer.css';
 
@@ -17,8 +16,6 @@ export const EntryViewer = () => {
     useEffect(() => {
         const url = window.location.href.split('/');
         const entry_id = url[url.length - 2];
-
-        console.log(url, entry_id);
 
         fetch(`${config.API_ROOT}entries/?entry_id=${entry_id}`, {
             method: 'GET',

@@ -12,11 +12,14 @@ export const CreateEntry = () => {
     const [height, setHeight] = useState('0');
 
     const createEntryAttempt = () => {
+        const title = titleInput.current.value.replace(/^\s+|\s+$/g, '');
+        const content = entryInput.current.value.replace(/^\s+|\s+$/g, '');
+
         fetch(`${config.API_ROOT}create-entry/`, {
             method: 'POST',
             body: JSON.stringify({
-                title: titleInput.current.value,
-                content: entryInput.current.value,
+                title: title,
+                content: content,
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -44,7 +47,7 @@ export const CreateEntry = () => {
     const groupStyle = {
         height: height,
         opacity: height === '0' ? '0' : '1',
-        padding: height === '0' ? '0 1em' : '1px 1em 1em',
+        padding: height === '0' ? '0 1em' : '1em',
     };
 
     return (
