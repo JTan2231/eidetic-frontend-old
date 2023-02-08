@@ -1,5 +1,4 @@
 import * as config from '../../util/config.js';
-import { getCookie } from '../../util/cookie.js';
 import { useRef, useState } from 'react';
 
 import '../../styles/index.css';
@@ -28,7 +27,7 @@ export const CreateUser = () => {
             }
         }).then(res => {
             if (res.status === 200) {
-                window.location.href = '/home';
+                window.location.href = '/';
             }
             else {
                 setFieldClasses('loginField error');
@@ -44,16 +43,16 @@ export const CreateUser = () => {
 
     return (
         <div>
-            <div className="header" style={{ justifyContent: 'center' }}>
+            <div className="header headerBackground" style={{ justifyContent: 'center' }}>
                 Eidetic
             </div>
             <div className="loginPage">
                 <div className="loginContainer">
                     <div className="loginFieldContainer">
-                        <input ref={usernameInput} className={fieldClasses} type="text" placeholder="Username" onKeyPress={createKeyPress} />
+                        <input ref={usernameInput} className={fieldClasses} type="text" placeholder="New username" onKeyPress={createKeyPress} />
                     </div>
                     <div className="loginFieldContainer">
-                        <input ref={passwordInput} className={fieldClasses} type="password" placeholder="Password" onKeyPress={createKeyPress} />
+                        <input ref={passwordInput} className={fieldClasses} type="password" placeholder="New password" onKeyPress={createKeyPress} />
                     </div>
                     <button className="loginButton" onClick={createClick}>
                         Create

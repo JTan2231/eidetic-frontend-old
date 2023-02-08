@@ -47,7 +47,7 @@ export const CreateEntry = () => {
     const groupStyle = {
         height: height,
         opacity: height === '0' ? '0' : '1',
-        padding: height === '0' ? '0 1em' : '1em',
+        padding: height === '0' ? '0 1em' : '1em 1em 0 1em',
     };
 
     return (

@@ -29,7 +29,6 @@
 body {
     font-size: var(--header-font-size);
     margin: 0;
-    padding: 0 var(--body-padding);
     overflow-x: hidden;
 }
 

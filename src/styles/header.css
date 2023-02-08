@@ -1,23 +1,24 @@
 .fixed {
     position: fixed;
     top: 0;
-    left: var(--body-padding);
+    left: 0;
     z-index: 100;
 }
 
 .header {
     --padding-x: 1em;
+    --header-side-margin: 1em;
 
     padding: 0;
     position: fixed;
-    width: calc(100vw - var(--padding-x) - var(--body-padding)); /* - scroll bar */
+    width: 100vw;
     height: var(--header-height);
     font-size: var(--header-font-size);
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: transparent;
     overflow: hidden;
 }
 
@@ -26,7 +27,8 @@
     width: 100vw;
     font-size: var(--header-font-size);
     height: var(--header-height);
-    background-color: white;
+    backdrop-filter: blur(1px);
+    background: linear-gradient(rgba(212, 212, 212, 0.5), rgba(255, 255, 255, 0));
 }
 
 .headerOption, .logo {
@@ -36,6 +38,14 @@
 
 .headerOption {
     font-size: var(--entry-font-size);
+}
+
+.headerOptionLeftmost {
+    margin-left: var(--header-side-margin);
+}
+
+.headerOptionRightmost {
+    margin-right: var(--header-side-margin);
 }
 
 .fauxHeader {
@@ -54,7 +64,7 @@
     background-color: white;
     overflow: hidden;
     border: 0;
-    right: var(--body-padding);
+    right: var(--header-side-margin);
     font-size: var(--header-font-size);
 }
 

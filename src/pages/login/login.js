@@ -54,7 +54,7 @@ export const Login = () => {
 
     return (
         <div>
-            <div className="header" style={{ justifyContent: 'center' }}>
+            <div className="header headerBackground" style={{ justifyContent: 'center' }}>
                 Eidetic
             </div>
             <div className="loginPage">

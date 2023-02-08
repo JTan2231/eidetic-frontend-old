@@ -93,13 +93,13 @@ export const Header = (props) => {
             <div className="fixed">
                 <div className="headerBackground">
                     <div className="header">
-                        <div className="logo"><a href="/" style={{ textDecoration: 'none', color: 'black' }}>Eidetic</a></div>
+                        <div className="logo headerOptionLeftmost"><a href="/" style={{ textDecoration: 'none', color: 'black' }}>Eidetic</a></div>
                         <div style={titleStyle} className="headerOption pageTitle" onClick={scrollToTop}>
                             <div className="textLink">
                                 {pageTitle}
                             </div>
                         </div>
-                        <div className="headerOption">
+                        <div className="headerOption headerOptionRightmost">
                             <span className="textLink">Account</span>
                             <AccountMenu {...menuProps} />
                         </div>

@@ -9,12 +9,12 @@
     padding-left: var(--field-padding-x);
     background-color: white;
     outline: 0;
-    transition: border 0.5s;
+    transition: all 0.5s;
 }
 
 .searchFieldContainer {
     position: relative;
-    margin: 0.5em 0;
+    margin: 2em 0 1em 0;
     font-size: var(--input-font-size);
 }
 
@@ -36,4 +36,5 @@
 
 .searchField:focus {
     border: 1px solid black;
+    background-color: #fafafa
 }
