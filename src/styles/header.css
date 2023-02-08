@@ -28,7 +28,7 @@
     font-size: var(--header-font-size);
     height: var(--header-height);
     backdrop-filter: blur(1px);
-    background: linear-gradient(rgba(212, 212, 212, 0.5), rgba(255, 255, 255, 0));
+    background: linear-gradient(rgba(212, 212, 212, 0.4), rgba(255, 255, 255, 0));
 }
 
 .headerOption, .logo {

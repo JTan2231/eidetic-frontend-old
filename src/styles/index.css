@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Armata&family=Carrois+Gothic&family=Saira&display=swap');
 :root {
+
+    --font-family: 'Carrois Gothic', sans-serif;
+
     --input-font-size: 16px;
 
     --entry-title-font-size: 24px;
@@ -33,7 +37,7 @@ body {
 }
 
 div {
-    font-family: Helvetica;
+    font-family: var(--font-family);
 }
 
 .textLink {       

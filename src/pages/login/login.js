@@ -32,7 +32,6 @@ export const Login = () => {
                 'X-CSRFToken': getCookie('csrftoken'),
             }
         }).then(res => {
-            console.log(res);
             if (res.status === 200) {
                 window.location.href = '/';
             }
@@ -48,15 +47,18 @@ export const Login = () => {
         }
     };
 
-    if (getCookie('auth_token')) {
-        return console.log('TODO: already logged in');
-    }
+    const headerLinkStyle = {
+        textDecoration: 'none',
+        color: 'black',
+        zIndex: 1,
+        justifyContent: 'center',
+    };
 
     return (
         <div>
-            <div className="header headerBackground" style={{ justifyContent: 'center' }}>
-                Eidetic
-            </div>
+            <a href="/" style={headerLinkStyle} className="header headerBackground">
+                <div>Eidetic</div>
+            </a>
             <div className="loginPage">
                 <div>
                     <div className="loginContainer">
