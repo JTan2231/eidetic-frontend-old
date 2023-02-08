@@ -42,18 +42,6 @@ export const Clusters = () => {
         });
     };
 
-    const importClick = () => {
-        fetch(`${config.API_ROOT}imports/`, {
-            method: 'POST',
-            body: JSON.stringify({
-                channel: 'the-start-of-an-idea',
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }).then(res => window.location.reload());
-    };
-
     const searchFilter = () => {
         const query = searchInput.current.value.toLowerCase();
         const filtered = clusters.map(c => c.filter(e => e.title.toLowerCase().includes(query)));
