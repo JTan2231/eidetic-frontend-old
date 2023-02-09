@@ -41,18 +41,25 @@ export const CreateUser = () => {
         }
     };
 
+    const headerLinkStyle = {
+        textDecoration: 'none',
+        color: 'black',
+        zIndex: 1,
+        justifyContent: 'center',
+    };
+
     return (
         <div>
-            <div className="header headerBackground" style={{ justifyContent: 'center' }}>
-                Eidetic
-            </div>
+            <a href="/" style={headerLinkStyle} className="header headerBackground">
+                <div>Eidetic</div>
+            </a>
             <div className="loginPage">
                 <div className="loginContainer">
                     <div className="loginFieldContainer">
-                        <input ref={usernameInput} className={fieldClasses} type="text" placeholder="New username" onKeyPress={createKeyPress} />
+                        <input ref={usernameInput} className={fieldClasses} type="text" placeholder="New Username" onKeyPress={createKeyPress} />
                     </div>
                     <div className="loginFieldContainer">
-                        <input ref={passwordInput} className={fieldClasses} type="password" placeholder="New password" onKeyPress={createKeyPress} />
+                        <input ref={passwordInput} className={fieldClasses} type="password" placeholder="New Password" onKeyPress={createKeyPress} />
                     </div>
                     <button className="loginButton" onClick={createClick}>
                         Create

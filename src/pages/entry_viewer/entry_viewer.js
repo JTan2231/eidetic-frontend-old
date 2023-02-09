@@ -6,12 +6,16 @@ import { Entry } from '../components/entry';
 import '../../styles/entry_viewer.css';
 
 function entryJSONToElement(entry) {
-    return <Entry id={entry.entry_id} title={entry.title} timestamp={entry.timestamp} content={entry.content} setThread={entry.setThread} />
+    return (
+        <Entry id={entry.entry_id}
+            title={entry.title}
+            timestamp={entry.timestamp}
+            content={entry.content} />
+    );
 }
 
 export const EntryViewer = () => {
     const [entries, setEntries] = useState([]);
-    const [thread, setThread] = useState([]);
 
     useEffect(() => {
         const url = window.location.href.split('/');
@@ -23,7 +27,7 @@ export const EntryViewer = () => {
                 'Content-Type': 'application/json',
             },
         }).then(res => res.json()).then(res => {
-            setEntries(res.map(r => Object.assign({}, r, { setThread: setThread })));
+            setEntries(res);
         });
     }, []);
 
@@ -31,9 +35,6 @@ export const EntryViewer = () => {
         <>
             <Header />
             <div className="homeContainer">
-                <div className="threadViewer">
-                    {thread.map(t => entryJSONToElement(t))}
-                </div>
                 <div className="entryInteractionContainer">
                     {entries.map(e => entryJSONToElement(e))}
                 </div>

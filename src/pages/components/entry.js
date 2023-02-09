@@ -1,33 +1,24 @@
 import * as config from '../../util/config';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { splitTimestamp } from '../../util/formatting';
 
+import '../../styles/index.css';
+import '../../styles/search.css';
 import '../../styles/entries.css';
+import '../../styles/entry_viewer.css';
 
 export const Entry = (props) => {
     const [related, setRelated] = useState([]);
+    const [filteredRelated, setFilteredRelated] = useState([]);
     const [id, setID] = useState(-1);
     const [textClasses, setTextClasses] = useState('entryContent textClipped');
     const [showText, setShowText] = useState('Show more');
 
+    const searchInput = useRef();
+
     useEffect(() => {
         setID(props.id);
     }, []);
-
-    // create an array of props from here to the root of the thread
-    const getThread = (children) => {
-        children.push(props);
-
-        if (props.getThread !== undefined) {
-            children = props.getThread(children);
-        }
-
-        return children;
-    };
-
-    const getThreadClick = () => {
-        props.setThread(getThread([]));
-    }
 
     const fetchRelated = () => {
         fetch(`${config.API_ROOT}entry-links/?entry_id=${id}`, {
@@ -37,14 +28,8 @@ export const Entry = (props) => {
             },
         }).then(res => res.json()).then(res => {
             const entries = res.entries;
-            setRelated(entries.map(r => (
-                <Entry id={r.entry_id} title={r.title} timestamp={r.timestamp} content={r.content} getThread={getThread} setThread={props.setThread} />
-            )));
+            setRelated(entries);
         });
-    };
-
-    const collapse = () => {
-        setRelated([]);
     };
 
     const showMore = () => {
@@ -58,6 +43,10 @@ export const Entry = (props) => {
     };
 
     const entryJSONToEntryOutline = (entryJSON) => {
+        const seeRelatedButtonStyle = {
+            display: related.length ? 'none' : '',
+        };
+
         return (
             <div className="entryOutline">
                 <div className="entry">
@@ -65,10 +54,9 @@ export const Entry = (props) => {
                     <div className="entryTimestamp">{splitTimestamp(entryJSON.timestamp)}</div>
                     <div className={textClasses}>{entryJSON.content}</div>
                     <div className="entryActionBar">
-                        <span className="entryAction" onClick={getThreadClick}>Show thread</span>
                         <span className="entryAction" onClick={showText === 'Show more' ? showMore : showLess}>{showText}</span>
-                        <span className="entryAction" onClick={related.length > 0 ? collapse : fetchRelated}>
-                            {related.length > 0 ? 'Collapse' : 'See related'}
+                        <span style={seeRelatedButtonStyle} className="entryAction" onClick={fetchRelated}>
+                            See related
                         </span>
                     </div>
                 </div>
@@ -76,10 +64,39 @@ export const Entry = (props) => {
         );
     };
 
+    const relatedJSONToListElements = (relatedJSON) => {
+        return (
+            <a href={`/${relatedJSON.entry_id}`} className="entryLink">
+                <div className="relatedItem">
+                    <span className="relatedItemText relatedItemTimestamp">{splitTimestamp(relatedJSON.timestamp).split(',')[0]}</span>
+                    <span className="relatedItemText relatedItemTitle">{relatedJSON.title}</span>
+                    <span>—</span>
+                    <span className="relatedItemText relatedItemContent">{relatedJSON.content}</span>
+                </div>
+            </a>
+        )
+    };
+
+    const searchFilter = () => {
+        const query = searchInput.current.value.toLowerCase();
+        const filtered = related.filter(e => (e.title.toLowerCase().includes(query) || e.content.toLowerCase().includes(query)));
+        setFilteredRelated(filtered);
+    };
+
+    const relatedContainerStyle = {
+        display: related.length ? '' : 'none',
+    };
+
     return (
         <div className="entryBlock">
             {entryJSONToEntryOutline(props)}
-            {related}
+
+            <div style={relatedContainerStyle} className="relatedListContainer">
+                <div className="searchFieldContainer">
+                    <input ref={searchInput} className="searchField" type="text" placeholder="Search" onChange={searchFilter} />
+                </div>
+                {(filteredRelated.length || searchInput.current?.value.length ? filteredRelated : related).map(r => relatedJSONToListElements(r))}
+            </div>
         </div>
     );
 }

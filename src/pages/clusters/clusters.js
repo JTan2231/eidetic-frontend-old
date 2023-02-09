@@ -4,6 +4,7 @@ import { Header } from '../components/header';
 import { CreateEntry } from '../components/create_entry';
 import { useState, useEffect, useRef } from 'react'
 
+import '../../styles/index.css';
 import '../../styles/clusters.css';
 import '../../styles/search.css';
 
@@ -46,17 +47,30 @@ export const Clusters = () => {
         const query = searchInput.current.value.toLowerCase();
         const filtered = clusters.map(c => c.filter(e => e.title.toLowerCase().includes(query)));
         setFilteredClusters(filtered);
-    }
+    };
 
     useEffect(() => {
         fetchClusters();
     }, []);
+
+    const importClick = () => {
+        fetch(`${config.API_ROOT}imports/`, {
+            method: 'POST',
+            body: JSON.stringify({
+                channel: 'the-start-of-an-idea',
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(res => window.location.reload());
+    };
 
     return (
         <>
             <Header />
             <div className="clusters">
                 <div className="clustersContentContainer">
+                    <button onClick={importClick}>Import (DEBUG)</button>
                     <div className="containerWrapper">
                         <div className="newEntryContainer">
                             <CreateEntry />

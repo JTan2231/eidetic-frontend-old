@@ -15,11 +15,6 @@
     align-self: center;
 }
 
-.entryLink {
-    text-decoration: none;
-    color: unset;
-}
-
 .clusterItem {
     padding: 0.5em;
     white-space: nowrap;

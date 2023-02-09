@@ -54,3 +54,8 @@ div {
 .goBack {
     font-size: var(--input-font-size);
 }
+
+.entryLink {
+    text-decoration: none;
+    color: unset;
+}

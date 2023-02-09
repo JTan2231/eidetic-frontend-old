@@ -3,6 +3,7 @@
     --field-padding-x: calc(2 * var(--field-padding-y));
     border: 1px solid transparent;
     font-size: var(--input-font-size);
+    font-family: var(--font-family);
     height: calc(100% - 2px);
     width: calc(100% - 2px - var(--field-padding-x));
     padding: 0.25em 0;
