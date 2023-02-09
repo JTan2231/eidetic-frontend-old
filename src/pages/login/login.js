@@ -69,7 +69,7 @@ export const Login = () => {
                             <input ref={passwordInput} className={fieldClasses} type="password" placeholder="Password" onKeyPress={loginKeyPress} />
                         </div>
                         <button className="loginButton" onClick={loginClick}>
-                            Login
+                            Log in
                         </button>
                     </div>
                     <div style={{ position: 'fixed', bottom: '3em', fontSize: '16px' }}>

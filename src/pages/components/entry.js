@@ -98,7 +98,9 @@ export const Entry = (props) => {
                 <div className="searchFieldContainer">
                     <input ref={searchInput} className="searchField" type="text" placeholder="Search" onChange={searchFilter} />
                 </div>
-                {(filteredRelated.length || searchInput.current?.value.length ? filteredRelated : related).map(r => relatedJSONToListElements(r))}
+                <div className="relatedItemContainer">
+                    {(filteredRelated.length || searchInput.current?.value.length ? filteredRelated : related).map(r => relatedJSONToListElements(r))}
+                </div>
             </div>
         </div>
     );

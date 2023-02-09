@@ -24,10 +24,37 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     padding: 0.5em;
-    outline: 1px solid #eee;
+    outline: 1px solid #ddd;
+    box-shadow: 0px 0px 10px transparent;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: box-shadow 0.5s;
+}
+
+.loginContainer:focus-within {
+    box-shadow: 0px 5px 10px #aaa;
 }
 
 .loginField {
+    border: 0;
+    font-size: var(--input-font-size);
+    height: 100%;
+    width: calc(100% - var(--field-padding-x));
+    padding: 0;
+    padding-left: var(--field-padding-x);
+    background-color: white;
+    outline: 1px solid transparent;
+    transition: all 0.5s;
+}
+
+.loginFieldContainer {
+    position: relative;
+    margin: 0.5em 0;
+}
+
+.loginField {
+    --field-padding-y: 0.2em;
+    --field-padding-x: calc(2 * var(--field-padding-y));
     border: 1px solid transparent;
     font-size: var(--input-font-size);
     font-family: var(--font-family);
@@ -42,7 +69,8 @@
 
 .loginFieldContainer {
     position: relative;
-    margin: 0.5em 0;
+    margin: 0.5em;
+    font-size: var(--input-font-size);
 }
 
 .loginFieldContainer::after {
@@ -51,41 +79,42 @@
     background-color: black;
     z-index: 1;
     right: 0;
-    bottom: -2px;
+    bottom: 0;
     height: 1px;
-    width: 0%;
+    width: 0em;
     transition: width 0.5s;
 }
 
 .loginFieldContainer:hover::after {
-    left: 0;
     width: 100%;
+    left: 0;
 }
 
 .loginField:focus {
     border: 1px solid black;
-    background-color: #efefef;
+    background-color: #efefef
 }
 
 .loginButton {
-    border: 0;
+    border: 1px solid transparent;
     outline: 0;
-    background-color: black;
-    color: white;
+    background-color: #eee;
+    color: black;
     font-size: var(--input-font-size);
-    font-family: var(--font-family);
     padding: var(--field-padding-y) var(--field-padding-x);
     margin: var(--field-margin-y) var(--field-margin-x);
     margin-right: 0;
     margin-bottom: 0;
     transition: all 0.5s;
     cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px transparent;
 }
 
 .loginButton:hover {
-    outline: 1px solid black;
-    color: black;
-    background-color: white;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px -3px #aaa;
 }
 
 .error {

@@ -17,13 +17,20 @@
 .relatedListContainer {
     background-color: transparent;
     margin: 0 1em 1em 1em;
-    overflow: hidden;
     border-top: 1px solid #aaa;
 }
 
 .relatedListTitle {
     font-size: 24px;
     margin: 0.5em 0;
+}
+
+.relatedItemContainer {
+    position: relative;
+    z-index: 1;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #ccc;
+    overflow: hidden;
 }
 
 .relatedItem {
@@ -39,7 +46,7 @@
 }
 
 .relatedItem:hover {
-    background-color: #ccc;
+    background-color: #ededed;
 }
 
 .relatedItemText {
