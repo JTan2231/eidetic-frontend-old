@@ -18,8 +18,13 @@
     background-color: transparent;
     margin: 0 1em 1em 1em;
     overflow: hidden;
+    border-top: 1px solid #aaa;
 }
 
+.relatedListTitle {
+    font-size: 24px;
+    margin: 0.5em 0;
+}
 
 .relatedItem {
     font-size: 16px;

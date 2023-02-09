@@ -92,6 +92,9 @@ export const Entry = (props) => {
             {entryJSONToEntryOutline(props)}
 
             <div style={relatedContainerStyle} className="relatedListContainer">
+                <div className="relatedListTitle">
+                    Related Entries
+                </div>
                 <div className="searchFieldContainer">
                     <input ref={searchInput} className="searchField" type="text" placeholder="Search" onChange={searchFilter} />
                 </div>
