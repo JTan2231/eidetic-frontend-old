@@ -56,22 +56,9 @@ export const Clusters = () => {
         fetchClusters();
     }, []);
 
-    const importClick = () => {
-        fetch(`${config.API_ROOT}imports/`, {
-            method: 'POST',
-            body: JSON.stringify({
-                channel: 'people-s-thoughts',
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }).then(res => window.location.reload());
-    };
-
     return (
         <>
             <Header />
-            <button onClick={importClick}>Import (DEBUG)</button>
             <div className="clusters">
                 <div className="clustersContentContainer">
                     <div className="containerWrapper">
