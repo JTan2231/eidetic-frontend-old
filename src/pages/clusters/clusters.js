@@ -48,7 +48,7 @@ export const Clusters = () => {
 
     const searchFilter = () => {
         const query = searchInput.current.value.toLowerCase();
-        const filtered = clusters.map(c => c.filter(e => e.title.toLowerCase().includes(query)));
+        const filtered = clusters.map(c => c.filter(e => e.title.toLowerCase().includes(query) || e.content.toLowerCase().includes(query)));
         setFilteredClusters(filtered);
     };
 

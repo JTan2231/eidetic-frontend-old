@@ -1,6 +1,6 @@
 .loginPage {
     position: fixed;
-    width: calc(100vw - var(--body-padding));
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
@@ -25,31 +25,10 @@
     justify-content: flex-end;
     padding: 0.5em;
     outline: 1px solid #ddd;
-    box-shadow: 0px 0px 10px transparent;
+    box-shadow: 0px 0px 5px #ddd;
     border-radius: 10px;
     background-color: #fff;
     transition: box-shadow 0.5s;
-}
-
-.loginContainer:focus-within {
-    box-shadow: 0px 5px 10px #aaa;
-}
-
-.loginField {
-    border: 0;
-    font-size: var(--input-font-size);
-    height: 100%;
-    width: calc(100% - var(--field-padding-x));
-    padding: 0;
-    padding-left: var(--field-padding-x);
-    background-color: white;
-    outline: 1px solid transparent;
-    transition: all 0.5s;
-}
-
-.loginFieldContainer {
-    position: relative;
-    margin: 0.5em 0;
 }
 
 .loginField {
@@ -65,42 +44,36 @@
     background-color: white;
     outline: 0;
     transition: all 0.5s;
+    border-radius: 5px;
 }
 
 .loginFieldContainer {
     position: relative;
     margin: 0.5em;
     font-size: var(--input-font-size);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(221, 221, 221, 0);
+    transition: box-shadow 0.5s;
 }
 
-.loginFieldContainer::after {
-    content: '';
-    position: absolute;
-    background-color: black;
-    z-index: 1;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    width: 0em;
-    transition: width 0.5s;
+.loginFieldContainer:focus-within {
+    box-shadow: 0px 0px 5px #ddd;
 }
 
-.loginFieldContainer:hover::after {
-    width: 100%;
-    left: 0;
+.loginField:hover {
+    border: 1px solid #ddd;
 }
 
 .loginField:focus {
-    border: 1px solid black;
-    background-color: #efefef
+    border: 1px solid #ddd;
 }
 
 .loginButton {
     border: 1px solid transparent;
     outline: 0;
-    background-color: #eee;
     color: black;
     font-size: var(--input-font-size);
+    font-family: var(--font-family);
     padding: var(--field-padding-y) var(--field-padding-x);
     margin: var(--field-margin-y) var(--field-margin-x);
     margin-right: 0;
@@ -108,15 +81,18 @@
     transition: all 0.5s;
     cursor: pointer;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px transparent;
+    box-shadow: 0px 0px 5px transparent;
+    text-shadow: 0px 0px 3px transparent;
+    background-color: transparent;
 }
 
 .loginButton:hover {
-    background-color: #ddd;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px -3px #aaa;
+    background-color: #eee;
+    border: 1px solid #eaeaea;
+    box-shadow: 0px 0px 5px -3px #eaeaea;
+    text-shadow: 0px 0px 3px #ddd;
 }
 
 .error {
-    border: 2px solid red;
+    border: 1px solid red;
 }

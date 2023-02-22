@@ -98,6 +98,7 @@
     font-size: var(--entry-font-size);
     margin-top: 1em;
     line-height: 1.5em;
+    white-space: break-spaces;
 }
 
 .textClipped {
@@ -188,7 +189,7 @@
     font-size: var(--entry-font-size);
     transition: all 0.3s;
     overflow: hidden;
-    background-color: #eee;
+    background-color: transparent;
     color: black;
     cursor: pointer;
     display: flex;
@@ -199,12 +200,11 @@
     margin: auto;
     border: 1px solid transparent;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(16, 16, 16, 0.125);
+    box-shadow: 0 0 5px rgba(16, 16, 16, 0);
 }
 
 .saveEntryButton:hover {
     border: 1px solid #ccc;
-    background-color: #ddd;
-    box-shadow: 0 0 5px rgba(16, 16, 16, 0.25);
-    text-shadow: 0 0 10px #888;
+    background-color: #eee;
+    box-shadow: 0 0 5px -3px rgba(16, 16, 16, 0.25);
 }

@@ -20,12 +20,6 @@ const AccountMenu = (props) => {
 export const Header = (props) => {
     const navbar = useRef();
 
-    const [merged, setMerged] = useState(false);
-    const [titleStyle, setTitleStyle] = useState({
-        transform: 'translateY(10px)',
-        opacity: '0',
-    });
-
     const logoutClick = () => {
         fetch(`${config.API_ROOT}logout/`, {
             method: 'POST',
@@ -39,53 +33,6 @@ export const Header = (props) => {
         });
     };
 
-    const getProp = (element, prop) => {
-        return getComputedStyle(element).getPropertyValue(prop);
-    };
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    const scrollHandler = () => {
-        if (navbar.current) {
-            const fontSize = parseInt(getProp(navbar.current, '--navbar-font-size'));
-
-            const heightEm = parseInt(getProp(navbar.current, '--navbar-height'));
-            const marginEm = parseInt(getProp(navbar.current, '--navbar-margin'));
-
-            const threshold = fontSize * heightEm * 0.5 + fontSize * marginEm;
-
-            if (window.pageYOffset > threshold) {
-                setMerged(true);
-                setTitleStyle({
-                    transform: 'translateY(0px)',
-                    opacity: '1',
-                });
-            }
-            else if (window.pageYOffset < threshold) {
-                setMerged(false);
-                setTitleStyle({
-                    transform: 'translateY(10px)',
-                    opacity: '0',
-                });
-            }
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', scrollHandler);
-
-        return () => window.removeEventListener('scroll', scrollHandler);
-    }, []);
-
-    const logoClick = () => {
-    };
-
-    const menuProps = {
-        logoutClick: logoutClick,
-    };
-
     const pageTitle = typeof props.viewing === 'string' ? formatTitle(props.viewing) : props.viewing;
 
     return (
@@ -94,14 +41,13 @@ export const Header = (props) => {
                 <div className="headerBackground">
                     <div className="header">
                         <div className="logo headerOptionLeftmost"><a href="/" style={{ textDecoration: 'none', color: 'black' }}>Eidetic</a></div>
-                        <div style={titleStyle} className="headerOption pageTitle" onClick={scrollToTop}>
+                        <div className="headerOption pageTitle">
                             <div className="textLink">
                                 {pageTitle}
                             </div>
                         </div>
                         <div className="headerOption headerOptionRightmost">
-                            <span className="textLink">Account</span>
-                            <AccountMenu {...menuProps} />
+                            <span className="textLink" onClick={logoutClick}>Log out</span>
                         </div>
                     </div>
                 </div>
