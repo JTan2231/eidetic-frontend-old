@@ -66,14 +66,14 @@ export const Entry = (props) => {
 
     const relatedJSONToListElements = (relatedJSON) => {
         return (
-            <a href={`/${relatedJSON.entry_id}`} className="entryLink">
-                <div className="relatedItem">
+            <div className="relatedItem">
+                <a href={`/${relatedJSON.entry_id}`} className="entryLink">
                     <span className="relatedItemText relatedItemTimestamp">{splitTimestamp(relatedJSON.timestamp).split(',')[0]}</span>
                     <span className="relatedItemText relatedItemTitle">{relatedJSON.title}</span>
                     <span>—</span>
                     <span className="relatedItemText relatedItemContent">{relatedJSON.content}</span>
-                </div>
-            </a>
+                </a>
+            </div>
         )
     };
 

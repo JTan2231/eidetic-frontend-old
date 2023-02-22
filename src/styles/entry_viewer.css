@@ -35,10 +35,7 @@
 
 .relatedItem {
     font-size: 16px;
-    padding: 0.5em;
     white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
     background-color: white;
     position: relative;
     transition: all 0.5s;
@@ -65,4 +62,6 @@
 
 .relatedItemContent {
     font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

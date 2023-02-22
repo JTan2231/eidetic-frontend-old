@@ -24,14 +24,11 @@
 }
 
 .clusterItem {
-    padding: 0.5em;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
     background-color: white;
     position: relative;
-    transition: all 0.5s;
+    transition: all 0.25s;
     cursor: pointer;
+    display: flex;
 }
 
 .clusterItem:hover {
@@ -39,7 +36,7 @@
 }
 
 .clusterItemText {
-    margin: 0 0.5em;
+    padding: 0 0.5em;
     user-select: none;
 }
 
@@ -50,8 +47,60 @@
 
 .clusterItemTitle {
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .clusterItemContent {
     font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.clusterItemOptions {
+    display: flex;
+    align-items: center;
+}
+
+.clusterItemOptions > svg {
+    transition: fill 0.25s;
+    fill: #888;
+}
+
+.clusterItemOptions:hover > svg {
+    fill: black;
+}
+
+.clusterItemOptionSelectBackground {
+    position: fixed;
+    background-color: transparent;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    cursor: default;
+}
+
+.clusterItemOptionSelect {
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 0 5px #aaa;
+    border-radius: 5px;
+    z-index: 100;
+    padding: 0.25em;
+    font-size: var(--options-font-size);
+}
+
+.selectMenuOption {
+    padding: 0.25em;
+    background-color: transparent;
+    color: #444;
+    border-radius: 5px;
+    transition: all 0.15s;
+}
+
+.selectMenuOption:hover {
+    background-color: #ededed;
+    color: black;
 }

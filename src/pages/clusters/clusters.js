@@ -2,6 +2,7 @@ import * as config from '../../util/config';
 import { splitTimestamp } from '../../util/formatting';
 import { Header } from '../components/header';
 import { CreateEntry } from '../components/create_entry';
+import { ClusterItemOptions } from '../components/cluster_item_options';
 import { useState, useEffect, useRef } from 'react'
 
 import '../../styles/index.css';
@@ -18,14 +19,16 @@ export const Clusters = () => {
             <div className="clusterContainer">
                 {
                     cluster.map(e => (
-                        <a className="entryLink" href={`/${e.entry_id}/`}>
-                            <div className="clusterItem">
+                        <div className="clusterItem">
+                            <a className="entryLink" href={`/${e.entry_id}/`}>
                                 <span className="clusterItemText clusterItemTimestamp">{splitTimestamp(e.timestamp).split(',')[0]}</span>
                                 <span className="clusterItemText clusterItemTitle">{e.title}</span>
                                 <span>—</span>
                                 <span className="clusterItemText clusterItemContent">{e.content}</span>
-                            </div>
-                        </a>
+                                <span style={{ flexGrow: '1' }}></span>
+                            </a>
+                            <ClusterItemOptions entryId={e.entry_id} />
+                        </div>
                     ))
                 }
             </div>
@@ -53,9 +56,22 @@ export const Clusters = () => {
         fetchClusters();
     }, []);
 
+    const importClick = () => {
+        fetch(`${config.API_ROOT}imports/`, {
+            method: 'POST',
+            body: JSON.stringify({
+                channel: 'people-s-thoughts',
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(res => window.location.reload());
+    };
+
     return (
         <>
             <Header />
+            <button onClick={importClick}>Import (DEBUG)</button>
             <div className="clusters">
                 <div className="clustersContentContainer">
                     <div className="containerWrapper">
