@@ -35,13 +35,17 @@ export const Clusters = () => {
         );
     };
 
-    const fetchClusters = () => {
-        let api = `${config.API_ROOT}clusters`;
+    const getUrlUsernameParam = () => {
         const url = window.location.href.split('/');
         if (url.length > 4) {
-            api += `?username=${url[url.length - 2]}`;
+            return url[url.length - 2];
         }
 
+        return '';
+    }
+
+    const fetchClusters = () => {
+        const api = `${config.API_ROOT}clusters?username=${getUrlUsernameParam()}`;
         fetch(api, {
             method: 'GET',
             headers: {
@@ -67,18 +71,17 @@ export const Clusters = () => {
             <Header />
             <div className="clusters">
                 <div className="clustersContentContainer">
-                    <div className="containerWrapper">
-                        <div className="newEntryContainer">
-                            <CreateEntry />
-                        </div>
-                    </div>
-                    <div className="clustersContentTitle">
-                        Clustered Entries
-                    </div>
-                    <div className="searchFieldContainer">
-                        <input ref={searchInput} className="searchField" type="text" placeholder="Search" onChange={searchFilter} />
-                    </div>
-                    {(filteredClusters.length ? filteredClusters.map(c => clusterJSONToElement(c)) : clusters.map(c => clusterJSONToElement(c)))}
+                    {clusters[0] !== 'NOUSER' ? (
+                        <>
+                            <div className="clustersContentTitle">
+                                {`${getUrlUsernameParam()}'s `}Clustered Entries
+                            </div>
+                            <div className="searchFieldContainer">
+                                <input ref={searchInput} className="searchField" type="text" placeholder="Search" onChange={searchFilter} />
+                            </div>
+                            {(filteredClusters.length ? filteredClusters.map(c => clusterJSONToElement(c)) : clusters.map(c => clusterJSONToElement(c)))}
+                        </>
+                    ) : `This user does not exist`}
                 </div>
             </div>
         </>
