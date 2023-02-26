@@ -27,7 +27,6 @@ export const Clusters = () => {
                                 <span className="clusterItemText clusterItemContent">{e.content}</span>
                                 <span style={{ flexGrow: '1' }}></span>
                             </a>
-                            <ClusterItemOptions entryId={e.entry_id} />
                         </div>
                     ))
                 }

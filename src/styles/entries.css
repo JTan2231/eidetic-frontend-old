@@ -122,10 +122,45 @@
     text-shadow: 0 0 10px transparent;
     transition: text-shadow 0.5s;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .entryAction:hover {
     text-shadow: 0 0 1px #aaa;
+}
+
+.profileLinkWrapper {
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.profileLink {
+    font-weight: bold;
+    color: black;
+    text-shadow: 0 0 10px transparent;
+    transition: text-shadow 0.5s;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+}
+
+.profileLink:hover {
+    text-shadow: 0 0 1px #aaa;
+}
+
+.profileLink::after {
+    content: '';
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    transition: background-color 0.5s;
+}
+
+.profileLink:hover::after {
+    background-color: black;
 }
 
 .newEntry {

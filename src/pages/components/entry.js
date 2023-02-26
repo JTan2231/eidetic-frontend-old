@@ -54,6 +54,7 @@ export const Entry = (props) => {
                     <div className="entryTimestamp">{splitTimestamp(entryJSON.timestamp)}</div>
                     <div className={textClasses}>{entryJSON.content}</div>
                     <div className="entryActionBar">
+                        <span className="profileLinkWrapper">Saved by <a className="profileLink" href={`/user/${props.username}`}>{props.username}</a></span>
                         <span className="entryAction" onClick={showText === 'Show more' ? showMore : showLess}>{showText}</span>
                         <span style={seeRelatedButtonStyle} className="entryAction" onClick={fetchRelated}>
                             See related
