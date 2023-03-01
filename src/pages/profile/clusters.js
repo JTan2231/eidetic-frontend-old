@@ -12,6 +12,7 @@ import '../../styles/search.css';
 export const Clusters = () => {
     const [clusters, setClusters] = useState([]);
     const [filteredClusters, setFilteredClusters] = useState([]);
+    const [followText, setFollowText] = useState('Follow');
     const searchInput = useRef();
 
     const clusterJSONToElement = (cluster) => {
@@ -61,8 +62,35 @@ export const Clusters = () => {
         setFilteredClusters(filtered);
     };
 
+    const followClick = () => {
+        fetch(`${config.API_ROOT}follow/`, {
+            method: 'POST',
+            body: JSON.stringify({
+                followee_username: getUrlUsernameParam(),
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(res => res.json()).then(res => {
+            setFollowText(res.status === 'followed' ? 'Unfollow' : 'Follow');
+        });
+    };
+
+    const checkFollow = () => {
+        fetch(`${config.API_ROOT}follow/?followee_username=${getUrlUsernameParam()}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(res => res.json()).then(res => {
+            console.log(res);
+            setFollowText(res.following ? 'Unfollow' : 'Follow');
+        });
+    };
+
     useEffect(() => {
         fetchClusters();
+        checkFollow();
     }, []);
 
     return (
@@ -74,6 +102,9 @@ export const Clusters = () => {
                         <>
                             <div className="clustersContentTitle">
                                 {`${getUrlUsernameParam()}'s `}Clustered Entries
+                            </div>
+                            <div className="saveEntryButton followButton" onClick={followClick}>
+                                <span>{followText}</span>
                             </div>
                             <div className="searchFieldContainer">
                                 <input ref={searchInput} className="searchField" type="text" placeholder="Search" onChange={searchFilter} />

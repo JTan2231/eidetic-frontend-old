@@ -104,3 +104,54 @@
     background-color: #ededed;
     color: black;
 }
+
+.followButton {
+    font-size: 16px;
+    margin: 1em 0;
+    width: fit-content;
+}
+
+.clusterHeaderTabContainer {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.headerTab {
+    position: relative;
+    margin-right: 1em;
+    font-size: 18px;
+}
+
+.headerTabUnderline {
+    content: '';
+    background-color: black;
+    position: absolute;
+    height: 1px;
+    width: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    transition: all 0.3s;
+}
+
+div.headerTab:hover > .headerTabUnderline {
+    background-color: #888;
+}
+
+.headerTabUnderlineSelected {
+    width: 100%;
+    left: 0;
+}
+
+.feedUsername {
+    color: black;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0 0 0 transparent;
+    transition: text-shadow 0.5s;
+}
+
+.feedUsername:hover {
+    text-shadow: 0 0 1px #aaa;
+}
