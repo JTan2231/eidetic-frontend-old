@@ -190,7 +190,7 @@
     transition: all 0.5s;
     opacity: 0;
     display: flex;
-    align-content: center;
+    align-items: center;
     overflow: hidden;
     padding: 0 1em 1em;
     padding-bottom: 0;

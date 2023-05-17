@@ -19,7 +19,7 @@ export const ClusterItemOptions = (props) => {
                 'Content-Type': 'application/json'
             }
         }).then(res => {
-            if (res.ok && res.status == 200) {
+            if (res.ok && res.status !== 400) {
                 location.reload();
             }
 
@@ -27,6 +27,23 @@ export const ClusterItemOptions = (props) => {
         }).then(res => {
             if (res.errors) {
                 alert(res.errors);
+            }
+        });
+    }
+
+    const togglePrivacy = () => {
+        fetch(`${API_ROOT}entries/`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                entry_id: props.entryId,
+                private: !props.private,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(res => {
+            if (res.ok && res.status !== 400) {
+                location.reload();
             }
         });
     }
@@ -41,6 +58,7 @@ export const ClusterItemOptions = (props) => {
             <>
                 <div className="clusterItemOptionSelectBackground" onClick={closeMenu}></div>
                 <div className="clusterItemOptionSelect" style={positionStyle}>
+                    <div className="selectMenuOption" onClick={togglePrivacy}>Toggle privacy</div>
                     <div className="selectMenuOption" onClick={deleteEntry}>Delete entry</div>
                 </div>
             </>

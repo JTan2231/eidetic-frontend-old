@@ -21,10 +21,11 @@ export const Clusters = () => {
     });
 
     const searchInput = useRef();
+    const promptInput = useRef();
 
     const entryJSONToElement = (e, feedEntry = false) => {
         return (
-            <div className="clusterItem">
+            <div className={e.private ? 'clusterItemDark' : 'clusterItem'}>
                 <a className="entryLink" href={`/${e.entry_id}/`}>
                     <span className="clusterItemText clusterItemTimestamp">{splitTimestamp(e.timestamp).split(',')[0]}</span>
                     <span className="clusterItemText clusterItemTitle">{e.title}</span>
@@ -34,7 +35,7 @@ export const Clusters = () => {
                 </a>
                 {feedEntry ?
                     <a className="clusterItemText clusterItemOptions feedUsername" href={`/user/${e.username}`}>{e.username}</a> :
-                    <ClusterItemOptions entryId={e.entry_id} />
+                    <ClusterItemOptions entryId={e.entry_id} private={e.private} />
                 }
             </div>
         )
@@ -104,6 +105,36 @@ export const Clusters = () => {
         }
     }
 
+    const openaiPrompt = (e) => {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            fetch(`${config.API_ROOT}openai/`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    prompt: promptInput.current.value,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then(res => res.json()).then(res => {
+                const entry_ids = res;
+                const filtered = clusters.map(c => c.filter(e => entry_ids.includes(e.entry_id)));
+                setFilteredClusters(filtered);
+            });
+        }
+    };
+
+    const imports = () => {
+        fetch(`${config.API_ROOT}imports/`, {
+            method: 'POST',
+            body: JSON.stringify({
+                channel: 'the-start-of-an-idea',
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(res => location.reload());
+    }
+
     useEffect(() => {
         fetchClusters();
     }, []);
@@ -125,6 +156,7 @@ export const Clusters = () => {
                     </div>
                     {showClusters ?
                         <>
+                            <button onClick={imports}>imports (DEBUG)</button>
                             <div className="containerWrapper">
                                 <div className="newEntryContainer">
                                     <CreateEntry />
@@ -132,6 +164,9 @@ export const Clusters = () => {
                             </div>
                             <div className="clustersContentTitle">
                                 Clustered Entries
+                            </div>
+                            <div className="searchFieldContainer">
+                                <input ref={promptInput} className="searchField" type="text" placeholder="AI Prompt" onKeyDown={openaiPrompt} />
                             </div>
                             <div className="searchFieldContainer">
                                 <input ref={searchInput} className="searchField" type="text" placeholder="Search" onChange={searchFilter} />

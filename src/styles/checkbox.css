@@ -1,0 +1,23 @@
+.box {
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    margin: 0 0.5em;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    padding: 0.15em 0.25em;
+    font-size: calc(var(--input-font-size) - 2px);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.light {
+    background-color: white;
+    box-shadow: 0 0 5px rgba(221, 221, 221, 0.5);
+}
+
+.dark {
+    background-color: #ddd;
+    box-shadow: 0 0 5px rgba(200, 200, 200, 0.5);
+}

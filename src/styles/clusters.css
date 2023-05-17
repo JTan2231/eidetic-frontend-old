@@ -35,6 +35,19 @@
     background-color: #ededed;
 }
 
+.clusterItemDark {
+    background-color: black;
+    color: #aaa;
+    position: relative;
+    transition: all 0.25s;
+    cursor: pointer;
+    display: flex;
+}
+
+.clusterItemDark:hover {
+    background-color: #333;
+}
+
 .clusterItemText {
     padding: 0 0.5em;
     user-select: none;

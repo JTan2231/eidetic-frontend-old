@@ -10,8 +10,10 @@ function entryJSONToElement(entry) {
         <Entry id={entry.entry_id}
             title={entry.title}
             timestamp={entry.timestamp}
+            private={entry.private}
             content={entry.content}
-            username={entry.username} />
+            username={entry.username}
+            display={entry.display} />
     );
 }
 

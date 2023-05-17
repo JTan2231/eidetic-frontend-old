@@ -46,6 +46,20 @@
     background-color: #ededed;
 }
 
+.relatedItemDark {
+    font-size: 16px;
+    white-space: nowrap;
+    background-color: black;
+    color: #aaa;
+    position: relative;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.relatedItemDark:hover {
+    background-color: #333;
+}
+
 .relatedItemText {
     margin: 0 0.5em;
     user-select: none;
@@ -64,4 +78,15 @@
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.entryPrivate {
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 0 0 10px transparent;
+    transition: text-shadow 0.5s;
+    cursor: default;
+    user-select: none;
+    text-decoration: none;
 }

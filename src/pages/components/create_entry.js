@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 
 import '../../styles/entries.css';
 import '../../styles/login.css';
-
+import '../../styles/checkbox.css';
 
 export const CreateEntry = () => {
     const entryInput = useRef();
@@ -11,7 +11,22 @@ export const CreateEntry = () => {
 
     const [height, setHeight] = useState('0');
 
+    const [label, setLabel] = useState('Public');
+    const [buttonClass, setButtonClass] = useState('light');
+
+    const toggle = () => {
+        if (label === 'Public') {
+            setLabel('Private');
+            setButtonClass('dark');
+        }
+        else {
+            setLabel('Public');
+            setButtonClass('light');
+        }
+    }
+
     const createEntryAttempt = () => {
+        // what do these lines do ???
         const title = titleInput.current.value.replace(/^\s+|\s+$/g, '');
         const content = entryInput.current.value.replace(/^\s+|\s+$/g, '');
 
@@ -20,6 +35,7 @@ export const CreateEntry = () => {
             body: JSON.stringify({
                 title: title,
                 content: content,
+                private: label === 'Private',
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -54,6 +70,9 @@ export const CreateEntry = () => {
         <>
             <textarea ref={entryInput} className="newEntry" placeholder="Create a new entry" onFocus={handleFocus} onBlur={handleBlur} />
             <div style={groupStyle} className="saveEntryGroup">
+                <div className={'box ' + buttonClass} onClick={toggle}>
+                    <span>{label}</span>
+                </div>
                 <input ref={titleInput} className="newEntryTitleInput" type="text" placeholder="Title" />
                 <div className="saveEntryButton" onClick={createEntryAttempt}>
                     <span>Save</span>

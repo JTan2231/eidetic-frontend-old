@@ -52,13 +52,18 @@ export const Entry = (props) => {
                 <div className="entry">
                     <div className="entryTitle">{entryJSON.title}</div>
                     <div className="entryTimestamp">{splitTimestamp(entryJSON.timestamp)}</div>
+                    <div className="entryPrivate">{entryJSON.private ? 'Private' : ''}</div>
                     <div className={textClasses}>{entryJSON.content}</div>
                     <div className="entryActionBar">
-                        <span className="profileLinkWrapper">Saved by <a className="profileLink" href={`/user/${props.username}`}>{props.username}</a></span>
-                        <span className="entryAction" onClick={showText === 'Show more' ? showMore : showLess}>{showText}</span>
-                        <span style={seeRelatedButtonStyle} className="entryAction" onClick={fetchRelated}>
-                            See related
-                        </span>
+                        {entryJSON.display ? (
+                            <>
+                                <span className="profileLinkWrapper">Saved by <a className="profileLink" href={`/user/${props.username}`}>{props.username}</a></span>
+                                <span className="entryAction" onClick={showText === 'Show more' ? showMore : showLess}>{showText}</span>
+                                <span style={seeRelatedButtonStyle} className="entryAction" onClick={fetchRelated}>
+                                    See related
+                                </span>
+                            </>
+                        ) : ''}
                     </div>
                 </div>
             </div>
@@ -67,7 +72,7 @@ export const Entry = (props) => {
 
     const relatedJSONToListElements = (relatedJSON) => {
         return (
-            <div className="relatedItem">
+            <div className={relatedJSON.private ? 'relatedItemDark' : 'relatedItem'}>
                 <a href={`/${relatedJSON.entry_id}`} className="entryLink">
                     <span className="relatedItemText relatedItemTimestamp">{splitTimestamp(relatedJSON.timestamp).split(',')[0]}</span>
                     <span className="relatedItemText relatedItemTitle">{relatedJSON.title}</span>
